@@ -32,6 +32,7 @@ permissions:
 # SUPER ADMIN has an access to the whole system without any limits
 # so we can just grant him access to /api/v2/*
  - { role: superadmin, verb: all, path: api/v2, action: accept }
+ - { role: superadmin, verb: post, path: api/v2/peatio/market/orders, action: drop }
  # superadmin has a full access to the peatio admin api
  - { role: superadmin, verb: all, path: admin, action: accept }
  - { role: superadmin, verb: get, path: assets, action: accept }
@@ -135,7 +136,8 @@ permissions:
 # TRADER
  # has standard user permissions to ACCOUNT, MARKET, RESOURCE modules
  - { role: trader, verb: all, path: api/v2/peatio/account, action: accept }
- - { role: trader, verb: all, path: api/v2/peatio/market, action: accept }
+ - { role: trader, verb: get, path: api/v2/peatio/market, action: accept }
+ - { role: trader, verb: all, path: api/v2/finex/market, action: accept }
  - { role: trader, verb: all, path: api/v2/barong/resource, action: accept }
  - { role: trader, verb: all, path: api/v2/resource, action: accept }
  # ranger access
@@ -144,7 +146,8 @@ permissions:
  # MEMBER
  # has standard user permissions to ACCOUNT, MARKET, RESOURCE modules
  - { role: member, verb: all, path: api/v2/peatio/account, action: accept }
- - { role: member, verb: all, path: api/v2/peatio/market, action: accept }
+ - { role: member, verb: get, path: api/v2/peatio/market, action: accept }
+ - { role: member, verb: all, path: api/v2/finex/market, action: accept }
  - { role: member, verb: all, path: api/v2/barong/resource, action: accept }
  - { role: member, verb: all, path: api/v2/resource, action: accept }
  # ranger access
@@ -153,7 +156,8 @@ permissions:
  # BROKER
  # has standard user permissions to ACCOUNT, MARKET, RESOURCE modules
  - { role: broker, verb: all, path: api/v2/peatio/account, action: accept }
- - { role: broker, verb: all, path: api/v2/peatio/market, action: accept }
+ - { role: broker, verb: get, path: api/v2/peatio/market, action: accept }
+ - { role: broker, verb: all, path: api/v2/finex/market, action: accept }
  - { role: broker, verb: all, path: api/v2/barong/resource, action: accept }
  - { role: broker, verb: all, path: api/v2/resource, action: accept }
  # ranger access
