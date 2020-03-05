@@ -27,19 +27,21 @@ services:
       - ../config/barong/authz_rules.yml:/home/app/config/authz_rules.yml
       - ../config/barong/management_api.yml:/home/app/config/management_api.yml
 
+<% if @config['finex']['enabled'] %>
   finex-api:
     restart: always
-    image: "<%= @utils['images']['finex'] %>"
+    image: "<%= @config['finex']['image'] %>"
     command: "./orderapi"
     volumes:
       - ../config/finex:/app/config:ro
 
   finex-engine:
     restart: always
-    image: "<%= @utils['images']['finex'] %>"
+    image: "<%= @config['finex']['image'] %>"
     command: "./finex"
     volumes:
       - ../config/finex:/app/config:ro
+<% end %>
 
   applogic:
     restart: always
